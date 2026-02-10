@@ -42,8 +42,8 @@ CREATE TABLE Smartphones
     ,MegaPixels	    DECIMAL(3,0)			  NOT NULL
     ,IsActief           BIT                         NOT NULL        DEFAULT 1
     ,Opmerking          VARCHAR(255)                    NULL        DEFAULT NULL
-    ,DatumAangemaakt    DATETIME(6)                 NOT NULL        NOW(6)
-    ,DatumGewijzigd     DATETIME(6)                 NOT NULL        NOW(6)
+    ,DatumAangemaakt    DATETIME(6)                 NOT NULL        DEFAULT NOW(6)
+    ,DatumGewijzigd     DATETIME(6)                 NOT NULL        DEFAULT NOW(6)
     ,CONSTRAINT         PK_Smartphones_Id    PRIMARY KEY            (Id)
 ) ENGINE=InnoDB;
 
@@ -69,7 +69,7 @@ INSERT INTO Smartphones
 )
 VALUES
  ('Apple', 'iPhone 16 Pro', 1256.56, 64, 'iOS 18', 6.7, '2025-01-19', 50),
- ('Samsung', 'Galaxy S25 Ultra', 1539, 128, 'Android 15', 6.1, '2025-02-01', 200)),
+ ('Samsung', 'Galaxy S25 Ultra', 1539, 128, 'Android 15', 6.1, '2025-02-01', 200),
  ('Google', 'Pixel 9 Pro', 890, 1024, 'Android 15', 6.3, '2024-12-20', 100);
 -- Voeg nog minimaal 5 extra smartphones toe
 
@@ -97,8 +97,8 @@ CREATE TABLE Sneakers
     ,Type               VARCHAR(25)                 NOT NULL
     ,IsActief           BIT                         NOT NULL        DEFAULT 1
     ,Opmerking          VARCHAR(255)                    NULL        DEFAULT NULL
-    ,DatumAangemaakt    DATETIME(6)                 NOT NULL        NOW(6)
-    ,DatumGewijzigd     DATETIME(6)                 NOT NULL        NOW(6)
+    ,DatumAangemaakt    DATETIME(6)                 NOT NULL        DEFAULT NOW(6)
+    ,DatumGewijzigd     DATETIME(6)                 NOT NULL        DEFAULT NOW(6)
     ,CONSTRAINT         PK_Smartphones_Id    PRIMARY KEY            (Id)
 ) ENGINE=InnoDB;
 
@@ -121,7 +121,7 @@ INSERT INTO Sneakers
 VALUES
  ('Nike', 'Air Jordan 1', 'Hardloop'),
  ('Adidas', 'Yeezy Boost 350', 'Basketbal'),
- ('New Balance', 'Pixel 9 Pro', 'Casual')),
+ ('New Balance', 'Pixel 9 Pro', 'Casual'),
  ('Trico', 'New Age', 'Casual'),
  ('Overlord', 'Tristar 6', 'Hardloop');
  -- Voeg nog minimaal 3 extra records toe
