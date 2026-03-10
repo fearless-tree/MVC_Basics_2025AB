@@ -15,7 +15,7 @@ class Zangeres
                         ,ZNG.Naam
                         ,ZNG.Nationaliteit
                         ,ZNG.Nettowaarde
-                        ,ZNG.Geboortedatum
+                        ,DATE_FORMAT(ZNG.Geboortedatum, "%d/%m/%Y") as Geboortedatum
                         ,ZNG.BekendsteHit
                 FROM    Zangeressen as ZNG
                 ORDER BY ZNG.Nettowaarde DESC

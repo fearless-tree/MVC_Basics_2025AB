@@ -18,7 +18,7 @@ class Sneaker
                         ,SNKR.Prijs
                         ,SNKR.Materiaal
                         ,CONCAT(SNKR.Gewicht, " gram") as Gewicht
-                        ,SNKR.Releasedatum
+                        ,DATE_FORMAT(SNKR.Releasedatum, "%d/%m/%Y") as Releasedatum
                 FROM    Sneakers as SNKR
                 ORDER BY SNKR.Type ASC
                         ,SNKR.Prijs DESC

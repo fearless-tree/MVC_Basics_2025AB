@@ -18,7 +18,7 @@ class Horloge
                         ,HRL.Materiaal
                         ,HRL.Diameter
                         ,HRL.Beweging
-                        ,HRL.Releasedatum
+                        ,DATE_FORMAT(HRL.Releasedatum, "%d/%m/%Y") as Releasedatum
                 FROM    Horloges as HRL
                 ORDER BY HRL.Prijs DESC
                         ,HRL.Releasedatum DESC';
