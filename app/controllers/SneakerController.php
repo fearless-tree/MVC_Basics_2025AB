@@ -1,14 +1,16 @@
 <?php
 
-class SneakerController extends BaseController {
+class SneakerController extends BaseController
+{
     private $sneakerModel;
 
-    public function __construct() {
-        // Laad het model in
+    public function __construct()
+    {
         $this->sneakerModel = $this->model('Sneaker');
     }
 
-    public function index() {
+    public function index()
+    {
         /**
          * Haal de resultaten van de model binnen
          */
@@ -18,12 +20,12 @@ class SneakerController extends BaseController {
          * Het $data-array geeft informatie mee aan de view-pagina
          */
         $data = [
-            'title' => 'Overzicht Sneakers',
+            'title'  => 'Overzicht Sneakers',
             'result' => $result
         ];
 
         /**
-         * Roep de view aan en geef de data mee
+         * Met de view-method uit de BaseController-class wordt de view aangeroepen
          */
         $this->view('sneaker/index', $data);
     }

@@ -11,17 +11,16 @@ class Smartphone
 
     public function getAllSmartphones()
     {
-        $sql = 'SELECT  SMPS.Merk
-                       ,SMPS.Model
-                       ,SMPS.Prijs
-                       ,SMPS.Geheugen
-                       ,SMPS.Besturingssysteem
-                       ,CONCAT(SMPS.Schermgrootte, " inch") as Schermgrootte
-                       ,DATE_FORMAT(SMPS.Releasedatum, "%d/%m/%Y") as Releasedatum
-                       ,CONCAT(SMPS.MegaPixels, " MP") as MegaPixels
-
+        $sql = 'SELECT   SMPS.Id
+                        ,SMPS.Merk
+                        ,SMPS.Model
+                        ,SMPS.Prijs
+                        ,SMPS.Geheugen
+                        ,SMPS.Besturingssysteem
+                        ,CONCAT(SMPS.Schermgrootte, " inch") as Schermgrootte
+                        ,DATE_FORMAT(SMPS.Releasedatum, "%d/%m/%Y") as Releasedatum
+                        ,CONCAT(SMPS.MegaPixels, " MP") as MegaPixels
                 FROM    Smartphones as SMPS
-
                 ORDER BY SMPS.Schermgrootte DESC
                         ,SMPS.Prijs DESC
                         ,SMPS.Geheugen DESC
@@ -31,5 +30,17 @@ class Smartphone
         $this->db->query($sql);
 
         return $this->db->resultSet();
+    }
+
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM Smartphones 
+        WHERE Id = :id';
+
+        $this->db->query($sql);
+
+        $this->db->bind(':id', $id, PDO::PARAM_INT);
+
+        return $this->db->execute();
     }
 }

@@ -3,7 +3,7 @@
 class BaseController
 {
     /**
-     * Hier maken we een nieuw model object aan en geven deze 
+     * Hier maken we een nieuw model object aan en geven deze
      * terug aan de controller
      */
     public function model($model)

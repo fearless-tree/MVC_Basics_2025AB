@@ -23,7 +23,7 @@ class Database
         $conn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
 
         /**
-         * We geven nog wat options mee voor het PDO-object om 
+         * We geven nog wat options mee voor het PDO-object om
          * fouten weer te geven
          */
         $options = array(
@@ -39,7 +39,7 @@ class Database
             $this->dbHandler = new PDO($conn, $this->dbUser, $this->dbPass, $options);
         } catch (PDOException $e) {
             /**
-             * Wanneer er een error optreed daarbij wordt er een PDOException object 
+             * Wanneer er een error optreed daarbij wordt er een PDOException object
              * aangemaakt met informatie over de error
              */
             // logger(__LINE__, __METHOD__, __FILE__, $e->getMessage());
@@ -54,7 +54,7 @@ class Database
         $this->statement = $this->dbHandler->prepare($sql);
     }
 
-    /** 
+    /**
      * Deze method haalt de gegevens op van je select-query
      * Je gebruikt deze method resultSet() als je meerdere rijen verwacht
      */

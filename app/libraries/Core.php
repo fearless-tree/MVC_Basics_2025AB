@@ -3,7 +3,7 @@
  * De Core class is de ruggegraat en meest belangrijke
  * class van het mvc-framework
  */
-class Core 
+class Core
 {
     // In de variabele $currentController stoppen we de naam van de controller
     protected $currentController = 'Homepages';
@@ -20,7 +20,7 @@ class Core
          * Roep de functie getURL() aan om de url in een array te zetten
          */
         $url = $this->getURL();
-        
+
         /**
          * Check of de controllerclass bestaat
          */
@@ -71,7 +71,7 @@ class Core
         $this->params = $url ? array_values($url): [];
 
         /**
-         * Roep de method met alle parameters aan van de class 
+         * Roep de method met alle parameters aan van de class
          */
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }

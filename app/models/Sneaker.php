@@ -11,18 +11,18 @@ class Sneaker
 
     public function getAllSneakers()
     {
-        // SQL query gebaseerd op de kolommen in je create-script
         $sql = 'SELECT  SNKR.Merk
-                       ,SNKR.Model
-                       ,SNKR.Type
-                       ,SNKR.Prijs
-                       ,SNKR.Materiaal
-                       ,SNKR.Gewicht
-                       ,DATE_FORMAT(SNKR.Releasedatum, "%d/%m/%Y") as Releasedatum
-
+                        ,SNKR.Model
+                        ,SNKR.Type
+                        ,SNKR.Prijs
+                        ,SNKR.Materiaal
+                        ,CONCAT(SNKR.Gewicht, " gram") as Gewicht
+                        ,SNKR.Releasedatum
                 FROM    Sneakers as SNKR
-
-                ORDER BY SNKR.Prijs DESC';
+                ORDER BY SNKR.Type ASC
+                        ,SNKR.Prijs DESC
+                        ,SNKR.Gewicht DESC
+                        ,SNKR.Releasedatum DESC';
 
         $this->db->query($sql);
 

@@ -1,10 +1,10 @@
 -- Step: 01
 -- ************************************************************
--- Doel: Maak een nieuwe database aan met de naam MVC_Basics_2509AB
+-- Doel : Maak een nieuwe database aan met de naam MVC_Basics_2509AB
 -- ************************************************************
--- Versie    Datum        Auteur             Omschrijving
--- *****     *****        ******             *************
--- 01        10-02-2026   Arjan de Ruijter    Smartphones
+-- Versie    Datum       Auteur            Omschrijving
+-- ******    ******      ******            ************
+-- 01        10-02-2026  Silvan	           Smartphones
 -- ************************************************************
 
 -- Verwijder database MVC_Basics_2509AB
@@ -18,11 +18,11 @@ USE `MVC_Basics_2509AB`;
 
 -- Step: 02
 -- ************************************************************
--- Doel: Maak een nieuwe tabel aan met de naam Smartphones
+-- Doel : Maak een nieuwe tabel aan met de naam Smartphones
 -- ************************************************************
--- Versie    Datum        Auteur             Omschrijving
--- *****     *****        ******             *************
--- 01        10-02-2026   Arjan de Ruijter    Tabel Smartphones
+-- Versie    Datum       Auteur            Omschrijving
+-- ******    ******      ******            ************
+-- 01        10-02-2026  Silvan 	       Tabel Smartphones
 -- ************************************************************
 -- Onderstaande velden toevoegen aan de tabel Smartphones
 -- Merk, Model, Prijs, Geheugen, Besturingssysteem,
@@ -31,29 +31,29 @@ USE `MVC_Basics_2509AB`;
 
 CREATE TABLE Smartphones
 (
-    Id                SMALLINT        UNSIGNED    NOT NULL    AUTO_INCREMENT,
-    Merk              VARCHAR(50)                 NOT NULL,
-    Model             VARCHAR(50)                 NOT NULL,
-    Prijs             DECIMAL(6,2)                NOT NULL,
-    Geheugen          DECIMAL(4,0)                NOT NULL,
-    Besturingssysteem VARCHAR(25)                 NOT NULL,
-    Schermgrootte     DECIMAL(3,2)                NOT NULL,
-    Releasedatum      DATE                        NOT NULL,
-    MegaPixels        DECIMAL(3,0)                NOT NULL,
-    IsActief          BIT                         NOT NULL    DEFAULT 1,
-    Opmerking         VARCHAR(255)                NULL        DEFAULT NULL,
-    DatumAangemaakt   DATETIME(6)                 NOT NULL    DEFAULT NOW(6),
-    DatumGewijzigd    DATETIME(6)                 NOT NULL    DEFAULT NOW(6),
+    Id                  SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    Merk                VARCHAR(50)       NOT NULL,
+    Model               VARCHAR(50)       NOT NULL,
+    Prijs               DECIMAL(6,2)      NOT NULL,
+    Geheugen            DECIMAL(4,0)      NOT NULL,
+    Besturingssysteem   VARCHAR(25)       NOT NULL,
+    Schermgrootte       DECIMAL(3,2)      NOT NULL,
+    Releasedatum        DATE              NOT NULL,
+    MegaPixels          DECIMAL(3,0)      NOT NULL,
+    IsActief            BIT               NOT NULL DEFAULT 1,
+    Opmerking           VARCHAR(255)      NULL DEFAULT NULL,
+    DatumAangemaakt     DATETIME(6)       NOT NULL DEFAULT NOW(6),
+    DatumGewijzigd      DATETIME(6)       NOT NULL DEFAULT NOW(6),
     CONSTRAINT PK_Smartphones_Id PRIMARY KEY (Id)
-) ENGINE=InnoDB;
+)ENGINE=InnoDB;
 
 -- Step: 03
 -- ************************************************************
--- Doel: Vul de tabel Smartphones met gegevens
+-- Doel : Vul de tabel Smartphones met gegevens
 -- ************************************************************
--- Versie    Datum        Auteur             Omschrijving
--- *****     *****        ******             *************
--- 01        10-02-2026   Arjan de Ruijter    Vulling Smartphones
+-- Versie    Datum       Auteur            Omschrijving
+-- ******    ******      ******            ************
+-- 01        10-02-2026  Silvan            Vulling Smartphones
 -- ************************************************************
 
 INSERT INTO Smartphones
@@ -68,77 +68,77 @@ INSERT INTO Smartphones
     MegaPixels
 )
 VALUES
-    ('Apple',   'iPhone 16 Pro',     1256.56,  64,  'iOS 18',      6.7, '2025-01-19',  50),
-    ('Samsung', 'Galaxy S25 Ultra',  1539,     128, 'Android 15',  6.1, '2025-02-01', 200),
-    ('Google',  'Pixel 9 Pro',        890,     1024,'Android 15',  6.3, '2024-12-20', 100),
-    ('OnePlus',  'OnePlus 13',        899.99,  256, 'Android 15',  6.8, '2025-01-10',  64),
-    ('Xiaomi',   'Xiaomi 14 Pro',     1099.00, 512, 'Android 15',  6.7, '2024-11-30',  50),
-    ('Sony',     'Xperia 1 VI',       1299.95, 256, 'Android 14',  6.5, '2024-09-15',  48),
-    ('Huawei',   'P70 Pro',           1199.00, 512, 'HarmonyOS',  6.6, '2024-10-05',  50),
-    ('Nokia',    'XR30',               699.00, 128, 'Android 14',  6.4, '2024-08-20',  64);
+    ('Apple',   'iPhone 16 Pro',      1256.56,  64,  'iOS 18',     6.7, '2025-01-19',  50),
+    ('Samsung', 'Galaxy S25 Ultra',   1539,    128,  'Android 15', 6.1, '2025-02-01', 200),
+    ('Google',  'Pixel 9 Pro',         890,    1024, 'Android 15', 6.3, '2024-12-20', 100),
+-- Voeg nog minimaal 5 extra smartphones toe
+    ('OnePlus', 'OnePlus 12',          799,    256,   'Android 15',  6.5, '2025-03-10', 48),
+    ('Xiaomi',  'Mi 14 Ultra',         699,    512,   'Android 15',  6.6, '2025-02-25', 200),
+    ('Sony',    'Xperia 2 V',          849,    256,   'Android 15',  6.1, '2024-11-15', 48),
+    ('Huawei',  'P70 Pro',             749,    256,   'HarmonyOS 4', 6.7, '2025-01-05', 200),
+    ('Motorola','Edge 60 Pro',         599,    128,   'Android 15',  6.5, '2025-03-01', 108);
 
 -- Step: 04
--- ****************************************************************************************
+-- ********************************************************************************************
 -- Doel: Maak een nieuwe tabel aan met de naam Sneakers
--- ****************************************************************************************
--- Versie    Datum        Auteur             Omschrijving
--- *****     *****        ******             *************
--- 01        10-02-2026   Arjan de Ruijter    Tabel Sneakers
--- ****************************************************************************************
-
+-- ********************************************************************************************
+-- Versie   Datum       Auteur           Omschrijving
+-- ****     ****        ******           *************
+-- 01       10-02-2026  Silvan           Tabel Sneakers
+-- ********************************************************************************************
 -- Onderstaande velden toevoegen aan de tabel Sneakers
--- Type (Hardloop, Basketball, Casual), Prijs, Materiaal (Leer, Mesh, Synthetisch), Gewicht, Releasedatum
--- ****************************************************************************************
+-- Type (Hardloop, Basketbal, Casual), Prijs, Materiaal (Leer, Mesh, Synthetisch), Gewicht, Releasedatum
+-- ********************************************************************************************
 
 CREATE TABLE Sneakers
 (
-    Id              SMALLINT        UNSIGNED    NOT NULL    AUTO_INCREMENT,
-    Merk            VARCHAR(50)                 NOT NULL,
-    Model           VARCHAR(50)                 NOT NULL,
-    Type            VARCHAR(25)                 NOT NULL,
-    IsActief        BIT                         NOT NULL    DEFAULT 1,
-    Opmerking       VARCHAR(255)                NULL        DEFAULT NULL,
-    DatumAangemaakt DATETIME(6)                 NOT NULL    DEFAULT NOW(6),
-    DatumGewijzigd  DATETIME(6)                 NOT NULL    DEFAULT NOW(6),
+    Id              SMALLINT        UNSIGNED        NOT NULL    AUTO_INCREMENT,
+    Merk            VARCHAR(50)                     NOT NULL,
+    Model           VARCHAR(50)                     NOT NULL,
+    Type            VARCHAR(25)                     NOT NULL,
+    Prijs           DECIMAL(6,2)                    NOT NULL,
+    Materiaal       VARCHAR(25)                     NOT NULL,
+    Releasedatum    VARCHAR(15)                     NOT NULL,
+    Gewicht         VARCHAR(25)                     NOT NULL,
+    IsActief        BIT                             NOT NULL    DEFAULT 1,
+    Opmerking       VARCHAR(255)                    NULL        DEFAULT NULL,
+    DatumAangemaakt DATETIME(6)                     NOT NULL    DEFAULT NOW(6),
+    DatumGewijzigd  DATETIME(6)                     NOT NULL    DEFAULT NOW(6),
     CONSTRAINT PK_Smartphones_Id PRIMARY KEY (Id)
-) ENGINE=InnoDB;
+)
+    ENGINE=InnoDB;
+
 
 -- Step: 05
--- ************************************************************
+-- ********************************************************************************************
 -- Doel: Vul de tabel Sneakers met gegevens
--- ************************************************************
--- Versie    Datum        Auteur             Omschrijving
--- *****     *****        ******             *************
--- 01        10-02-2026   Arjan de Ruijter    Vulling Sneakers
--- ************************************************************
+-- ********************************************************************************************
+-- Versie   Datum       Auteur           Omschrijving
+-- ****     ****        ******           *************
+-- 01       10-02-2026  Silvan           Vulling Sneakers
+-- ********************************************************************************************
 
 INSERT INTO Sneakers
 (
     Merk,
     Model,
-    Type
+    Type,
+    Prijs,
+    Materiaal,
+    Gewicht,
+    Releasedatum
 )
 VALUES
-    ('Nike',       'Air Jordan 1',   'Hardloop'),
-    ('Adidas',     'Yeezy Boost 350','Basketbal'),
-    ('New Balance','Pixel 9 Pro',    'Casual'),
-    ('Trico',      'New Age',        'Casual'),
-    ('Overlord',   'Tristar 6',      'Hardloop'),
-    ('Puma',       'RS-X3',          'Casual'),
-    ('Asics',      'Gel-Kayano 31',  'Hardloop'),
-    ('Reebok',    'Question Mid',    'Basketbal');
+    ('Nike', 'Air Jordan 1', 'Hardloop', 179.99, 'Leer', 420, '2024-01-15'),
+    ('Adidas', 'Yeezy Boost 350', 'Basketbal', 220.00, 'Mesh', 380, '2023-11-10'),
+    ('New Balance', 'Pixel 9 Pro', 'Casual', 129.95, 'Synthetisch', 410, '2024-03-05'),
+    ('Trico', 'New Age', 'Casual', 89.99, 'Mesh', 395, '2022-09-20'),
+    ('Overlord', 'Tristar 6', 'Hardloop', 159.50, 'Leer', 430, '2023-06-18'),
 
--- Step: 06
--- ************************************************************
--- Doel: Voeg extra kolommen toe aan de tabel Sneakers
--- ************************************************************
--- Versie    Datum        Auteur             Omschrijving
--- *****     *****        ******             *************
--- 01        10-02-2026   SB                 Vulling Sneakers
--- ************************************************************
+-- voeg minimaal 3 extra records toe
+    ('Puma', 'RS-X', 'Casual', 119.99, 'Synthetisch', 400, '2023-04-12'),
+    ('Nike', 'Air Max 90', 'Hardloop', 149.99, 'Leer', 415, '2022-08-01'),
+    ('Adidas', 'Ultraboost 22', 'Hardloop', 189.99, 'Mesh', 390, '2024-02-22');
 
-ALTER TABLE Sneakers
-ADD Prijs DECIMAL(6,2) NOT NULL AFTER Type,
-ADD Materiaal VARCHAR(25) NOT NULL AFTER Prijs,
-ADD Gewicht DECIMAL(5,2) NOT NULL AFTER Materiaal,
-ADD Releasedatum DATE NOT NULL AFTER Gewicht;
+SELECT * FROM mvc_basics_2509ab.smartphones;
+SELECT * FROM mvc_basics_2509ab.sneakers;
