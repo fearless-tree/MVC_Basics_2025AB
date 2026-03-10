@@ -41,4 +41,34 @@ class ZangeressenController extends BaseController
         $this->index('flex', 'Record is verwijderd');
     }
 
+    public function create()
+    {
+        $data = [
+            'title'   => 'Nieuwe zangeres toevoegen',
+            'display' => 'none',
+            'message' => ''
+        ];
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST['naam']) ||
+                empty($_POST['nationaliteit']) ||
+                empty($_POST['nettowaarde']) ||
+                empty($_POST['geboortedatum']) ||
+                empty($_POST['bekendstehit'])) {
+
+                $data['display'] = 'flex';
+                $data['message'] = 'Vul alle velden in';
+            } else {
+                $data['display'] = 'flex';
+                $data['message'] = 'De gegevens zijn opgeslagen';
+
+                $this->zangeresModel->create($_POST);
+
+                header('Refresh: 3; URL=' . URLROOT . '/ZangeressenController/index');
+            }
+        }
+
+        $this->view('zangeressen/create', $data);
+    }
+
 }

@@ -37,4 +37,28 @@ class Zangeres
 
         return $this->db->execute();
     }
+
+    public function create($data)
+    {
+        $sql = "INSERT INTO Zangeressen ( Naam
+                                        ,Nationaliteit
+                                        ,Nettowaarde
+                                        ,Geboortedatum
+                                        ,BekendsteHit
+                                        )
+                VALUES (:naam,
+                        :nationaliteit,
+                        :nettowaarde,
+                        :geboortedatum,
+                        :bekendstehit)";
+
+        $this->db->query($sql);
+        $this->db->bind(':naam', $data['naam'], PDO::PARAM_STR);
+        $this->db->bind(':nationaliteit', $data['nationaliteit'], PDO::PARAM_STR);
+        $this->db->bind(':nettowaarde', $data['nettowaarde'], PDO::PARAM_INT);
+        $this->db->bind(':geboortedatum', $data['geboortedatum'], PDO::PARAM_STR);
+        $this->db->bind(':bekendstehit', $data['bekendstehit'], PDO::PARAM_STR);
+
+        return $this->db->execute();
+    }
 }

@@ -8,6 +8,27 @@
             </div>
         </div>
 
+
+        <!-- Terugkoppeling naar de gebruiker -->
+        <div class="row mt-3 d-<?= $data['display']; ?> justify-content-center">
+            <div class="col-10 text-begin text-primary">
+                <div class="alert alert-success" role="alert">
+                    <?= $data['message']; ?>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Knop voor het maken van een nieuw sneaker record -->
+        <div class="row mt-3 d-flex justify-content-center">
+            <div class="col-10 text-begin text-danger">
+                <a href="<?= URLROOT; ?>/SneakerController/create"
+                   class="btn btn-warning"
+                   role="button">Nieuwe sneaker
+                </a>
+            </div>
+        </div>
+
         <div class="row mt-3 d-flex justify-content-center">
             <div class="col-10">
                 <table class="table table-striped">
@@ -20,18 +41,25 @@
                         <th>Materiaal</th>
                         <th>Gewicht</th>
                         <th>Releasedatum</th>
+                        <th>Verwijder</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($data['result'] as $sneakers) : ?>
+                    <?php foreach ($data['result'] as $sneaker) : ?>
                         <tr>
-                            <td><?= $sneakers->Merk; ?></td>
-                            <td><?= $sneakers->Model; ?></td>
-                            <td><?= $sneakers->Type; ?></td>
-                            <td><?= $sneakers->Prijs; ?></td>
-                            <td><?= $sneakers->Materiaal; ?></td>
-                            <td><?= $sneakers->Gewicht; ?></td>
-                            <td><?= $sneakers->Releasedatum; ?></td>
+                            <td><?= $sneaker->Merk; ?></td>
+                            <td><?= $sneaker->Model; ?></td>
+                            <td><?= $sneaker->Type; ?></td>
+                            <td><?= $sneaker->Prijs; ?></td>
+                            <td><?= $sneaker->Materiaal; ?></td>
+                            <td><?= $sneaker->Gewicht; ?></td>
+                            <td><?= $sneaker->Releasedatum; ?></td>
+                            <td class="text-center">
+                                <a href="<?= URLROOT; ?>/SneakerController/delete/<?= $sneaker->Id; ?>"
+                                   onclick="return confirm('Weet je zeker dat je dit record wilt verwijderen?');">
+                                    <i class="bi bi-trash3-fill text-danger"></i>
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
