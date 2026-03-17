@@ -39,6 +39,7 @@
                         <th>Nettowaarde</th>
                         <th>Geboortedatum</th>
                         <th>Bekendste Hit</th>
+                        <th>Wijzig</th>
                         <th>Verwijder</th>
                     </tr>
                     </thead>
@@ -50,6 +51,11 @@
                             <td><?= $zangeres->Nettowaarde; ?></td>
                             <td><?= $zangeres->Geboortedatum; ?></td>
                             <td><?= $zangeres->BekendsteHit; ?></td>
+                            <td class="text-center">
+                                <a href="<?= URLROOT; ?>/ZangeressenController/update/<?= $zangeres->Id; ?>">
+                                    <i class="bi bi-pencil-fill text-success"></i>
+                                </a>
+                            </td>
                             <td class="text-center">
                                 <a href="<?= URLROOT; ?>/ZangeressenController/delete/<?= $zangeres->Id; ?>"
                                    onclick="return confirm('Weet je zeker dat je dit record wilt verwijderen?');">

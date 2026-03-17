@@ -71,4 +71,40 @@ class ZangeressenController extends BaseController
         $this->view('zangeressen/create', $data);
     }
 
+    public function update($id = NULL)
+    {
+        $data = [
+            'title'   => 'Wijzig zangeres',
+            'display' => 'none',
+            'message' => '',
+            'color'   => ''
+        ];
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST['naam']) ||
+                empty($_POST['nationaliteit']) ||
+                empty($_POST['nettowaarde']) ||
+                empty($_POST['geboortedatum']) ||
+                empty($_POST['bekendstehit'])) {
+
+                $data['display'] = 'flex';
+                $data['message'] = 'Vul alle velden in';
+                $data['color'] = 'danger';
+            } else {
+                $result = $this->zangeresModel->updateZangeres($_POST);
+
+                $data['display'] = 'flex';
+                $data['message'] = 'Het record is succesvol opgeslagen';
+                $data['color'] = 'success';
+                header('Refresh:3; url=' . URLROOT . '/ZangeressenController/index');
+            }
+
+            $id = $_POST['id'];
+        }
+
+        $data['zangeres'] = $this->zangeresModel->getZangeresById($id);
+
+        $this->view('zangeressen/update', $data);
+    }
+
 }

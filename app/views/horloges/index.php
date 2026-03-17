@@ -41,6 +41,7 @@
                         <th>Diameter (mm)</th>
                         <th>Beweging</th>
                         <th>Releasedatum</th>
+                        <th>Wijzig</th>
                         <th>Verwijder</th>
                     </tr>
                     </thead>
@@ -54,6 +55,11 @@
                             <td><?= $horloge->Diameter; ?></td>
                             <td><?= $horloge->Beweging; ?></td>
                             <td><?= $horloge->Releasedatum; ?></td>
+                            <td class="text-center">
+                                <a href="<?= URLROOT; ?>/HorlogesController/update/<?= $horloge->Id; ?>">
+                                    <i class="bi bi-pencil-fill text-success"></i>
+                                </a>
+                            </td>
                             <td class="text-center">
                                 <a href="<?= URLROOT; ?>/HorlogesController/delete/<?= $horloge->Id; ?>"
                                    onclick="return confirm('Weet je zeker dat je dit record wilt verwijderen?');">

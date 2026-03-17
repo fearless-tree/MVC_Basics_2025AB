@@ -41,6 +41,7 @@
                         <th>Materiaal</th>
                         <th>Gewicht</th>
                         <th>Releasedatum</th>
+                        <th>Wijzig</th>
                         <th>Verwijder</th>
                     </tr>
                     </thead>
@@ -54,6 +55,11 @@
                             <td><?= $sneaker->Materiaal; ?></td>
                             <td><?= $sneaker->Gewicht; ?></td>
                             <td><?= $sneaker->Releasedatum; ?></td>
+                            <td class="text-center">
+                                <a href="<?= URLROOT; ?>/SneakerController/update/<?= $sneaker->Id; ?>">
+                                    <i class="bi bi-pencil-fill text-success"></i>
+                                </a>
+                            </td>
                             <td class="text-center">
                                 <a href="<?= URLROOT; ?>/SneakerController/delete/<?= $sneaker->Id; ?>"
                                    onclick="return confirm('Weet je zeker dat je dit record wilt verwijderen?');">

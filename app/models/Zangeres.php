@@ -61,4 +61,42 @@ class Zangeres
 
         return $this->db->execute();
     }
+
+    public function getZangeresById($id)
+    {
+        $sql = 'SELECT   ZNG.Id
+                        ,ZNG.Naam
+                        ,ZNG.Nationaliteit
+                        ,ZNG.Nettowaarde
+                        ,ZNG.Geboortedatum
+                        ,ZNG.BekendsteHit
+                FROM    Zangeressen as ZNG
+                WHERE   ZNG.Id = :id';
+
+        $this->db->query($sql);
+        $this->db->bind(':id', $id, PDO::PARAM_INT);
+
+        return $this->db->single();
+    }
+
+    public function updateZangeres($request)
+    {
+        $sql = 'UPDATE Zangeressen as ZNG
+                    SET     ZNG.Naam = :naam
+                            ,ZNG.Nationaliteit = :nationaliteit
+                            ,ZNG.Nettowaarde = :nettowaarde
+                            ,ZNG.Geboortedatum = :geboortedatum
+                            ,ZNG.BekendsteHit = :bekendstehit
+                    WHERE   ZNG.Id = :id';
+
+        $this->db->query($sql);
+        $this->db->bind(':id', $request['id'], PDO::PARAM_INT);
+        $this->db->bind(':naam', $request['naam'], PDO::PARAM_STR);
+        $this->db->bind(':nationaliteit', $request['nationaliteit'], PDO::PARAM_STR);
+        $this->db->bind(':nettowaarde', $request['nettowaarde'], PDO::PARAM_INT);
+        $this->db->bind(':geboortedatum', $request['geboortedatum'], PDO::PARAM_STR);
+        $this->db->bind(':bekendstehit', $request['bekendstehit'], PDO::PARAM_STR);
+
+        return $this->db->execute();
+    }
 }
