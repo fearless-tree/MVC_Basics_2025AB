@@ -46,18 +46,45 @@ class ZangeressenController extends BaseController
         $data = [
             'title'   => 'Nieuwe zangeres toevoegen',
             'display' => 'none',
-            'message' => ''
+            'message' => '',
+            'errors'  => []
         ];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST['naam']) ||
-                empty($_POST['nationaliteit']) ||
-                empty($_POST['nettowaarde']) ||
-                empty($_POST['geboortedatum']) ||
-                empty($_POST['bekendstehit'])) {
+            $errors = [];
 
-                $data['display'] = 'flex';
-                $data['message'] = 'Vul alle velden in';
+            if (empty(trim($_POST['naam']))) {
+                $errors['naam'] = 'Voer een naam in';
+            } elseif (strlen($_POST['naam']) > 50) {
+                $errors['naam'] = 'Naam mag maximaal 50 tekens bevatten';
+            }
+
+            if (empty(trim($_POST['nationaliteit']))) {
+                $errors['nationaliteit'] = 'Voer een nationaliteit in';
+            } elseif (strlen($_POST['nationaliteit']) > 50) {
+                $errors['nationaliteit'] = 'Maximaal 50 tekens';
+            }
+
+            if (empty($_POST['nettowaarde'])) {
+                $errors['nettowaarde'] = 'Voer een nettowaarde in';
+            } elseif (!is_numeric($_POST['nettowaarde']) || $_POST['nettowaarde'] < 0 || $_POST['nettowaarde'] > 999999999) {
+                $errors['nettowaarde'] = 'Voer een geldige nettowaarde in (0 - 999999999)';
+            }
+
+            if (empty($_POST['geboortedatum'])) {
+                $errors['geboortedatum'] = 'Voer een geboortedatum in';
+            } elseif (!DateTime::createFromFormat('Y-m-d', $_POST['geboortedatum'])) {
+                $errors['geboortedatum'] = 'Voer een geldig datum in (jjjj-mm-dd)';
+            }
+
+            if (empty(trim($_POST['bekendstehit']))) {
+                $errors['bekendstehit'] = 'Voer een bekendste hit in';
+            } elseif (strlen($_POST['bekendstehit']) > 100) {
+                $errors['bekendstehit'] = 'Maximaal 100 tekens';
+            }
+
+            if (!empty($errors)) {
+                $data['errors'] = $errors;
             } else {
                 $data['display'] = 'flex';
                 $data['message'] = 'De gegevens zijn opgeslagen';
@@ -77,19 +104,45 @@ class ZangeressenController extends BaseController
             'title'   => 'Wijzig zangeres',
             'display' => 'none',
             'message' => '',
-            'color'   => ''
+            'color'   => '',
+            'errors'  => []
         ];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST['naam']) ||
-                empty($_POST['nationaliteit']) ||
-                empty($_POST['nettowaarde']) ||
-                empty($_POST['geboortedatum']) ||
-                empty($_POST['bekendstehit'])) {
+            $errors = [];
 
-                $data['display'] = 'flex';
-                $data['message'] = 'Vul alle velden in';
-                $data['color'] = 'danger';
+            if (empty(trim($_POST['naam']))) {
+                $errors['naam'] = 'Voer een naam in';
+            } elseif (strlen($_POST['naam']) > 50) {
+                $errors['naam'] = 'Naam mag maximaal 50 tekens bevatten';
+            }
+
+            if (empty(trim($_POST['nationaliteit']))) {
+                $errors['nationaliteit'] = 'Voer een nationaliteit in';
+            } elseif (strlen($_POST['nationaliteit']) > 50) {
+                $errors['nationaliteit'] = 'Maximaal 50 tekens';
+            }
+
+            if (empty($_POST['nettowaarde'])) {
+                $errors['nettowaarde'] = 'Voer een nettowaarde in';
+            } elseif (!is_numeric($_POST['nettowaarde']) || $_POST['nettowaarde'] < 0 || $_POST['nettowaarde'] > 999999999) {
+                $errors['nettowaarde'] = 'Voer een geldige nettowaarde in (0 - 999999999)';
+            }
+
+            if (empty($_POST['geboortedatum'])) {
+                $errors['geboortedatum'] = 'Voer een geboortedatum in';
+            } elseif (!DateTime::createFromFormat('Y-m-d', $_POST['geboortedatum'])) {
+                $errors['geboortedatum'] = 'Voer een geldig datum in (jjjj-mm-dd)';
+            }
+
+            if (empty(trim($_POST['bekendstehit']))) {
+                $errors['bekendstehit'] = 'Voer een bekendste hit in';
+            } elseif (strlen($_POST['bekendstehit']) > 100) {
+                $errors['bekendstehit'] = 'Maximaal 100 tekens';
+            }
+
+            if (!empty($errors)) {
+                $data['errors'] = $errors;
             } else {
                 $result = $this->zangeresModel->updateZangeres($_POST);
 
