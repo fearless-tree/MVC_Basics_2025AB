@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <!-- Terugkoppeling naar de gebruiker -->
+        <!-- Terugkoppeling naar de gebruiker (success only) -->
         <div class="row mt-3 d-<?= $data['display']; ?> justify-content-center">
             <div class="col-6">
                 <div class="alert alert-<?= $data['color'] ?? 'success'; ?>" role="alert">
@@ -76,9 +76,13 @@
                             <div class="invalid-feedback"><?= $data['errors']['megapixels']; ?></div>
                         <?php endif; ?>
                     </div>
-                    <button type="submit" class="btn btn-primary">Verstuur</button>
+                    <div class="d-flex justify-content-between mt-3 mb-5">
+                        <button type="submit" class="btn btn-primary">Verstuur</button>
+                        <a href="<?= URLROOT; ?>/homepages/index" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Terug naar homepage
+                        </a>
+                    </div>
                 </form>
-                <a href="<?= URLROOT; ?>/homepages/index"><i class="bi bi-arrow-left"></i></a>
             </div>
         </div>
     </div>
